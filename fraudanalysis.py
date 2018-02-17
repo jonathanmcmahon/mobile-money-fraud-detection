@@ -118,7 +118,7 @@ def eval_model(model, data, logger, plots=False):
     """Evaluate a model against test data."""
 
     # Rename logger
-    model_name = ModelClass.__name__
+    model_name = model.__class__.__name__
     saved_logger_name = logger.name
     logger.name = model_name
 
@@ -134,7 +134,7 @@ def eval_model(model, data, logger, plots=False):
     accuracy = accuracy_score(data["y_test"], y_pred)
     logger.info("Accuracy: %.2f%%" % (accuracy * 100.0))
 
-    # Calculate F1 score
+     # Calculate F1 score
     f1score = f1_score(data["y_test"], y_pred)
     logger.info("F1 Score: %.2f%%" % f1score)
 
@@ -152,7 +152,7 @@ def eval_model(model, data, logger, plots=False):
     # Rename logger to original name
     logger.name = saved_logger_name
 
-    return (accuracy, f1, cm)
+    return (accuracy, f1score, cm)
 
 
 if __name__ == "__main__":
@@ -181,11 +181,11 @@ if __name__ == "__main__":
         model = train_model(data=data, ModelClass=RandomForestClassifier)
 
         # Evaluate model against test data
-        acc, f1, cm = eval_model(data, model, logger)
+        acc, f1, cm = eval_model(model, data, logger)
 
         # Plot feature importance
         features = data["x_train"].columns
-        importance = result_model.feature_importances_
+        importance = model.feature_importances_
         indices = np.argsort(importance)
         plt.figure(1)
         plt.title("Feature Importances")
