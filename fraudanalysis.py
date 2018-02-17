@@ -134,7 +134,7 @@ def eval_model(model, data, logger, plots=False):
     accuracy = accuracy_score(data["y_test"], y_pred)
     logger.info("Accuracy: %.2f%%" % (accuracy * 100.0))
 
-     # Calculate F1 score
+    # Calculate F1 score
     f1score = f1_score(data["y_test"], y_pred)
     logger.info("F1 Score: %.2f%%" % f1score)
 

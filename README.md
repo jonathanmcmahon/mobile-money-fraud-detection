@@ -1,10 +1,13 @@
 # mobile-money-fraud-detection
 Brief analysis of fraud in a synthetic dataset of mobile money transactions
 
+### Dataset ###
+
+[https://www.kaggle.com/ntnu-testimon/paysim1/data](https://www.kaggle.com/ntnu-testimon/paysim1/data)
 
 ### Requirements ###
 
-- Python 3.6
+- Python 3.6 *(I like f strings)*
 - Matplotlib
 - scikit-learn
 - numpy
